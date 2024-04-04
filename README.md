@@ -1,7 +1,32 @@
 # Seminar_2024_04_29
 * Bacteria genome assembly and annotation (Canu and Prokka)
 
+## 0.Before start
 
+### 0.1 Anaconda install
+
+Anaconda linl: https://www.anaconda.com/
+
+    wget https://repo.anaconda.com/archive/Anaconda3-2024.02-1-Linux-x86_64.sh
+    sh ./Anaconda3-2024.02-1-Linux-x86_64.sh
+
+### 0.2 Path setting
+
+In home directory
+
+    vi .profile
+
+    press 'i'
+
+    PATH='folder 위치':$PATH
+
+    press 'esc'
+
+    press ':'
+
+    wq!
+
+    
 ## 1.Bacterial genome size estimation
 Canu는 assemble하고자 하는 genome의 대략적인 size를 알아야함.
 따라서 genomes sequencing 데이터에서 k-mer 기반으로 genome size estimation 과정을 먼저 진행함.
