@@ -3,6 +3,8 @@
 
 
 ## 1.Bacterial genome size estimation
+Canu는 assemble하고자 하는 genome의 대략적인 size를 알아야함.
+따라서 genomes sequencing 데이터에서 k-mer 기반으로 genome size estimation 과정을 먼저 진행함.
 
 ### 1.1 Jellyfish installation
 
