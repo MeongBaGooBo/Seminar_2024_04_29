@@ -6,7 +6,7 @@
 
 ### 1.1 Jellyfish installation
 
-Jellyfish link:
+Jellyfish link: https://github.com/gmarcais/Jellyfish
     
     wget https://github.com/gmarcais/Jellyfish/releases/download/v2.3.1/jellyfish-2.3.1.tar.gz
     tar -zxvf jellyfish-2.3.1.tar.gz 
@@ -26,7 +26,7 @@ Jellyfish link:
 
 ### 2.1 Canu installation
 
-Canu links:
+Canu links: https://github.com/marbl/canu
 
     conda install -c conda-forge -c bioconda -c defaults canu
 
@@ -34,7 +34,7 @@ Canu links:
 
     canu -p 2GT5 -d 2GT5_Canu_output genomeSize=5.5m maxThreads=70  -pacbio-raw /home/sgmn0223/Syn/2GT5/Pacbio/Raw_data/2GT5_rawdata1/Analysis_Results/All.fastq
 
-## 3. Circularization
+## 3. Circularization (이전 seminar에서 진행하였음)
 Circulator tool은 BWA, Prodigal, Samtools, Mummer tool들을 필요로 하여 먼저 설치 후 path 설정해주어야 함.
 
 Circlator link: https://github.com/sanger-pathogens/circlator
@@ -101,20 +101,56 @@ Mummer link: https://github.com/mummer4/mummer
 * Output file인 04.merge.circularise.log 확인하여  circularization check
 * Circularised genome data: 06.fixstart.fasta
 
-## 4.Bacterial genome annotation
+## 4.Polishing
+Pilon을 사용하기 위해서 BWA, Bowtie2를 설치해주어야함.
+
+Pilon link: https://github.com/broadinstitute/pilon
+
+### 4.1 필요한 tool들 설치
+
+* BWA (이전 단계에서 설치함)
+
+BWA link: https://github.com/lh3/bwa  
+
+      wget https://github.com/lh3/bwa/archive/refs/tags/v0.7.17.tar.gz
+      tar -zxvf v0.7.17.tar.gz
+      cd bwa-0.7.17/
+      make
+또는 
+       
+    git clone https://github.com/lh3/bwa.git
+    cd bwa
+    make
+
+* Bowtie2
+
+Bowtie2 link: https://github.com/BenLangmead/bowtie2
+  
+    wget https://github.com/BenLangmead/bowtie2/releases/download/v2.5.3/bowtie2-2.5.3-linux-x86_64.zip
+    unzip bowtie2-2.5.3-linux-x86_64.zip
+
+### 4.2 Pilon install
+
+    conda install bioconda::pilon
+
+### Polising by Pilon
+
+
+
+## 5.Bacterial genome annotation
 Prokka 설치를 위해서 anaconda를 먼저 설치해주어야함.
 
 Prokka link: https://github.com/tseemann/prokka
 
-### 3.2 Prokka install
+### 5.1 Prokka install
 
     conda install -c conda-forge -c bioconda -c defaults prokka
     
-### 3.3 Prokka DB setup
+### 5.2 Prokka DB setup
 
     prokka --setupdb
     
-### 3.4 Annotation by Prokka
+### 5.3 Annotation by Prokka
 
     prokka -outdir ./Prokka_output 06.fixstart.fasta --cpus 60
     
