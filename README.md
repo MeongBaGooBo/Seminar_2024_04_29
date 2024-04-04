@@ -18,7 +18,7 @@ In home directory
 
     press 'i'
 
-    PATH='folder 위치':$PATH
+    PATH='folder 위치':$PATH 입력하기 
 
     press 'esc'
 
