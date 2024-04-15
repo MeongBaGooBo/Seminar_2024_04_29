@@ -5,7 +5,7 @@
 
 ### 0.1 Anaconda install
 
-Anaconda linl: https://www.anaconda.com/
+Anaconda link: https://www.anaconda.com/
 
     wget https://repo.anaconda.com/archive/Anaconda3-2024.02-1-Linux-x86_64.sh
     sh ./Anaconda3-2024.02-1-Linux-x86_64.sh
@@ -39,29 +39,34 @@ Canu는 assemble하고자 하는 genome의 대략적인 size를 알아야함.
 
 Jellyfish link: https://github.com/gmarcais/Jellyfish
     
-    wget https://github.com/gmarcais/Jellyfish/releases/download/v2.3.1/jellyfish-2.3.1.tar.gz
-    tar -zxvf jellyfish-2.3.1.tar.gz 
-    cd jellyfish-2.3.1/
-    ./configure
-    make
-    make install
-또는
-
     wget https://github.com/gmarcais/Jellyfish/releases/download/v2.3.0/jellyfish-linux
     chmod 777 jellyfish-linux
 
 ### 1.2 Genome size estimation
 
-    jellyfish count -m 21 -t 60 -s 900G -o /var2/sgmn0223/Seminar/Z.Jellyfish/Jellyfish_Illumina_17mer_out -C /var2/sgmn0223/Seminar/1.Raw_data_illumina/*.fastq
+    jellyfish count -m 21 -t 8 -s 100M -o Jellyfish_Illumina_21mer_out -C *.fastq
 
-    jellyfish histo -t 70 /var2/sgmn0223/Seminar/Z.Jellyfish/Jellyfish_Illumina_21mer_out -o /var2/sgmn0223/Seminar/Z.Jellyfish/Jellyfish_Illumina_21mer_histo
+* count: k-mer counting
+* -m: length of mer
+* -t: number of threads
+* -s: initial hash size
+* -o: output file
+* -C: count both strand
+* *.fastq: input file (illumina forward and reverse)
+                 
+      jellyfish histo -t 8 -o Jellyfish_Illumina_21mer_histo Jellyfish_Illumina_21mer_out
+
+* histo: plot the histogram
+* -t: number of threads
+* -o: output file
+* Jellyfish_Illumina_21mer_out: input file (output of jellyfish count)
 
 ### 1.3 Genome size calculation
 
 http://genomescope.org/genomescope2.0
 
-* K-mer length: 21
-* Ploidy: 1
+* K-mer length: used k-mer length
+* Ploidy = 1
 
 ## 2.Bacterial genome assembly
 
@@ -73,7 +78,19 @@ Canu links: https://github.com/marbl/canu
 
 ### 2.2 Genome assembly
 
-    canu -p 2GT5 -d 2GT5_Canu_output genomeSize=5.5m maxThreads=70  -pacbio-raw /home/sgmn0223/Syn/2GT5/Pacbio/Raw_data/2GT5_rawdata1/Analysis_Results/All.fastq
+    canu -p Seminar -d Canu_output genomeSize=5.4m maxThreads=8  -nanopore-raw B04.fastq
+
+* -p: prefix
+* -d: output
+* genomeSize=: predicted genome size
+* maxThreads=: number of threads
+* -nanopore-raw: using nanopore data
+* B04.fastq: input file (nanopore)
+
+### 2.3
+
+    awk '/^>/{if(NR>1) exit; print; next} {if (!/^>/) print}' 06.fixstart.fasta > circularized.fasta
+
 
 ## 3. Circularization (이전 seminar에서 진행하였음)
 Circulator tool은 BWA, Prodigal, Samtools, Mummer tool들을 필요로 하여 먼저 설치 후 path 설정해주어야 함.
@@ -86,12 +103,6 @@ Circlator link: https://github.com/sanger-pathogens/circlator
 * BWA
 
 BWA link: https://github.com/lh3/bwa  
-
-      wget https://github.com/lh3/bwa/archive/refs/tags/v0.7.17.tar.gz
-      tar -zxvf v0.7.17.tar.gz
-      cd bwa-0.7.17/
-      make
-또는 
        
     git clone https://github.com/lh3/bwa.git
     cd bwa
@@ -174,7 +185,7 @@ Bowtie2 link: https://github.com/BenLangmead/bowtie2
 
     conda install bioconda::pilon
 
-### Polising by Pilon
+### 4.3 Polising by Pilon
 
  -Xms -Xmx value change
 
