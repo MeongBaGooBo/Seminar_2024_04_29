@@ -50,6 +50,16 @@ Jellyfish link: https://github.com/gmarcais/Jellyfish
 
 ### 1.2 Genome size estimation
 
+    jellyfish count -m 21 -t 60 -s 900G -o /var2/sgmn0223/Seminar/Z.Jellyfish/Jellyfish_Illumina_17mer_out -C /var2/sgmn0223/Seminar/1.Raw_data_illumina/*.fastq
+
+    jellyfish histo -t 70 /var2/sgmn0223/Seminar/Z.Jellyfish/Jellyfish_Illumina_21mer_out -o /var2/sgmn0223/Seminar/Z.Jellyfish/Jellyfish_Illumina_21mer_histo
+
+### 1.3 Genome size calculation
+
+http://genomescope.org/genomescope2.0/?
+
+* K-mer length: 21
+* Ploidy: 1
 
 ## 2.Bacterial genome assembly
 
