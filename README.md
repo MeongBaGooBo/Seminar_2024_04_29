@@ -26,6 +26,8 @@ In home directory
 
     wq!
 
+    enter
+
     
 ## 1.Bacterial genome size estimation
 Canu는 assemble하고자 하는 genome의 대략적인 size를 알아야함.
