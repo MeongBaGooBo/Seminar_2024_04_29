@@ -10,6 +10,8 @@ Anaconda linl: https://www.anaconda.com/
     wget https://repo.anaconda.com/archive/Anaconda3-2024.02-1-Linux-x86_64.sh
     sh ./Anaconda3-2024.02-1-Linux-x86_64.sh
 
+* anaconda 폴더 위치: /var2 내 자신의 folder로 지정 
+
 ### 0.2 Path setting
 
 In home directory
