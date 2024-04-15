@@ -87,10 +87,9 @@ Canu links: https://github.com/marbl/canu
 * -nanopore-raw: using nanopore data
 * B04.fastq: input file (nanopore)
 
-### 2.3
+Fasta 파일 내 첫 sequence (가장 긴 서열) parsing
 
     awk '/^>/{if(NR>1) exit; print; next} {if (!/^>/) print}' 06.fixstart.fasta > circularized.fasta
-
 
 ## 3. Circularization (이전 seminar에서 진행하였음)
 Circulator tool은 BWA, Prodigal, Samtools, Mummer tool들을 필요로 하여 먼저 설치 후 path 설정해주어야 함.
