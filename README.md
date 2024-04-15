@@ -174,6 +174,8 @@ Bowtie2 link: https://github.com/BenLangmead/bowtie2
 
 ### Polising by Pilon
 
+ -Xms -Xmx value change
+
     bowtie2-build circularized.fata Round1
 
     bowtie2 -p 8 -x Round1 -1 /home/sgmn0223/0.IBV_Seminar/20240325/0.Raw_data/1.Raw_data_illumina/B04_S13_R1_001.fastq -2 /home/sgmn0223/0.IBV_Seminar/20240325/0.Raw_data/1.Raw_data_illumina/B04_S13_R2_001.fastq -S Round1.sam
