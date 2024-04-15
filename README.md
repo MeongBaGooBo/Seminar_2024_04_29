@@ -87,10 +87,6 @@ Canu links: https://github.com/marbl/canu
 * -nanopore-raw: using nanopore data
 * B04.fastq: input file (nanopore)
 
-Fasta 파일 내 첫 sequence (가장 긴 서열) parsing
-
-    awk '/^>/{if(NR>1) exit; print; next} {if (!/^>/) print}' 06.fixstart.fasta > circularized.fasta
-
 ## 3. Circularization (이전 seminar에서 진행하였음)
 Circulator tool은 BWA, Prodigal, Samtools, Mummer tool들을 필요로 하여 먼저 설치 후 path 설정해주어야 함.
 
@@ -152,6 +148,10 @@ Mummer link: https://github.com/mummer4/mummer
 * Output file인 04.merge.circularise.log 확인하여  circularization check
 * Circularised genome data: 06.fixstart.fasta
 
+Fasta 파일 내 첫 sequence (가장 긴 서열) parsing
+
+    awk '/^>/{if(NR>1) exit; print; next} {if (!/^>/) print}' 06.fixstart.fasta > circularized.fasta
+
 ## 4.Polishing (option)
 Pilon을 사용하기 위해서 BWA, Bowtie2를 설치해주어야함.
 
@@ -163,12 +163,6 @@ Pilon link: https://github.com/broadinstitute/pilon
 
 BWA link: https://github.com/lh3/bwa  
 
-      wget https://github.com/lh3/bwa/archive/refs/tags/v0.7.17.tar.gz
-      tar -zxvf v0.7.17.tar.gz
-      cd bwa-0.7.17/
-      make
-또는 
-       
     git clone https://github.com/lh3/bwa.git
     cd bwa
     make
@@ -190,14 +184,34 @@ Bowtie2 link: https://github.com/BenLangmead/bowtie2
 
     bowtie2-build circularized.fata Round1
 
-    bowtie2 -p 8 -x Round1 -1 /home/sgmn0223/0.IBV_Seminar/20240325/0.Raw_data/1.Raw_data_illumina/B04_S13_R1_001.fastq -2 /home/sgmn0223/0.IBV_Seminar/20240325/0.Raw_data/1.Raw_data_illumina/B04_S13_R2_001.fastq -S Round1.sam
-    
-    samtools sort -@ 8 Round1.sam -o Round1.sorted.bam
-    
-    samtools index -@ 8 Round1.sorted.bam
+* circularzied.fasta: input file (circularized genome)
+* Round1: prefic
 
-    pilon --genome circularized.fasta --frags Round1.sorted.bam --output Round1
+      bowtie2 -p 8 -x Round1 -1 B04_S13_R1_001.fastq -2 B04_S13_R2_001.fastq -S Round1.sam
 
+* -p: number of threads
+* -x: prefix
+* -1: illumina forward data
+* -2: illumina reverse data
+* -S: output file (sam file)
+    
+      samtools sort -@ 8 Round1.sam -o Round1.sorted.bam
+
+* sort: sort alignment file
+* -@: number of threads
+* -o: output file (bam file)
+    
+      samtools index -@ 8 Round1.sorted.bam
+
+* index: indexing alignmnet file
+* -@: number of threads
+* Round1.sorted.bam: input file (sorted bam file)
+
+      pilon --genome circularized.fasta --frags Round1.sorted.bam --output Round1
+
+* --genome: input file (genome file)
+* --frags: input file (indexed and sorted bam file)
+* --output: output file 
 
 ## 5.Bacterial genome annotation
 Prokka 설치를 위해서 anaconda를 먼저 설치해주어야함.
@@ -214,7 +228,8 @@ Prokka link: https://github.com/tseemann/prokka
     
 ### 5.3 Annotation by Prokka
 
-    prokka -outdir ./Prokka_output 06.fixstart.fasta --cpus 60
-    
-* 06.fixstart.fasta: circularised genome sequence
+    prokka -outdir ./Prokka_output 06.fixstart.fasta --cpus 8
+
 * --outdir: output directory
+* 06.fixstart.fasta: circularised genome sequence
+* --cpus: number of threads
