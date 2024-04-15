@@ -128,7 +128,7 @@ Mummer link: https://github.com/mummer4/mummer
 * Output file인 04.merge.circularise.log 확인하여  circularization check
 * Circularised genome data: 06.fixstart.fasta
 
-## 4.Polishing
+## 4.Polishing (option)
 Pilon을 사용하기 위해서 BWA, Bowtie2를 설치해주어야함.
 
 Pilon link: https://github.com/broadinstitute/pilon
@@ -162,6 +162,15 @@ Bowtie2 link: https://github.com/BenLangmead/bowtie2
 
 ### Polising by Pilon
 
+    bowtie2-build circularized.fata Round1
+
+    bowtie2 -p 8 -x Round1 -1 /home/sgmn0223/0.IBV_Seminar/20240325/0.Raw_data/1.Raw_data_illumina/B04_S13_R1_001.fastq -2 /home/sgmn0223/0.IBV_Seminar/20240325/0.Raw_data/1.Raw_data_illumina/B04_S13_R2_001.fastq -S Round1.sam
+    
+    samtools sort -@ 8 Round1.sam -o Round1.sorted.bam
+    
+    samtools index -@ 8 Round1.sorted.bam
+
+    pilon --genome circularized.fasta --frags Round1.sorted.bam --output Round1
 
 
 ## 5.Bacterial genome annotation
