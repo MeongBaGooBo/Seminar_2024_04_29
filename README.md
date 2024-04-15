@@ -180,7 +180,7 @@ Bowtie2 link: https://github.com/BenLangmead/bowtie2
 
 ### 4.3 Polising by Pilon
 
- -Xms -Xmx value change
+ -Xms -Xmx value change (vi pilon)
 
     bowtie2-build circularized.fata Round1
 
