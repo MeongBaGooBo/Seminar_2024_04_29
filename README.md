@@ -56,7 +56,7 @@ Jellyfish link: https://github.com/gmarcais/Jellyfish
 
 ### 1.3 Genome size calculation
 
-http://genomescope.org/genomescope2.0/?
+http://genomescope.org/genomescope2.0
 
 * K-mer length: 21
 * Ploidy: 1
