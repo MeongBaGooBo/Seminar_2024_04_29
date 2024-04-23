@@ -192,7 +192,7 @@ Bowtie2 link: https://github.com/BenLangmead/bowtie2
 
  -Xms -Xmx value change (vi pilon)
 
-    bowtie2-build circularized.fata Round1
+    bowtie2-build circularized.fasta Round1
 
 * circularzied.fasta: input file (circularized genome)
 * Round1: prefic
