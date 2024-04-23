@@ -1,7 +1,10 @@
 # Seminar_2024_04_29
 * Bacteria genome assembly and annotation (Canu and Prokka)
 
-  git clone 
+Git clone
+
+    git clone https://github.com/MeongBaGooBo/Seminar_2024_04_29.git
+
 
 ## 0.Before start
 
