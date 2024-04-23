@@ -1,6 +1,8 @@
 # Seminar_2024_04_29
 * Bacteria genome assembly and annotation (Canu and Prokka)
 
+  git clone 
+
 ## 0.Before start
 
 ### 0.1 Anaconda install
