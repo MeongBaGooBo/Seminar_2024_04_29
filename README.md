@@ -229,7 +229,6 @@ Bowtie2 link: https://github.com/BenLangmead/bowtie2
 * --output: output file 
 
 ## 5.Bacterial genome annotation
-Prokka 설치를 위해서 anaconda를 먼저 설치해주어야함.
 
 Prokka link: https://github.com/tseemann/prokka
 
