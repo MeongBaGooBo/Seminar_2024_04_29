@@ -63,6 +63,16 @@ Jellyfish link: https://github.com/gmarcais/Jellyfish
 
 ### 1.3 Genome size calculation
 
+k-mer 계산으로 genome size 예측을 위해 먼저 server에 있는 파일을 내 컴퓨터로 가져오는 과정을 진행함.
+
+    scp -P 2222 sgmn0223@168.131.81.48:Jellyfish_Illumina_21mer_histo /Users/seongminkim/Desktop/
+
+* -P: port number
+* sgmn0223: server ID
+* 168.131.81.48: server IP
+* Jellyfish_Illumina_21mer_histo: sever에서 가져오고자 하는 파일이름 (절대 경로를 넣어주어야함)
+* /Users/seongminkim/Desktop/: 저장하고자하는 내 컴퓨터의 위치 
+
 http://genomescope.org/genomescope2.0
 
 * K-mer length: used k-mer length
