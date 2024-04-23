@@ -65,7 +65,7 @@ Jellyfish link: https://github.com/gmarcais/Jellyfish
 
 k-mer 계산으로 genome size 예측을 위해 먼저 server에 있는 파일을 내 컴퓨터로 가져오는 과정을 진행함.
 
-    scp -P 2222 sgmn0223@168.131.81.48:Jellyfish_Illumina_21mer_histo /Users/seongminkim/Desktop/
+    scp -P 2222 sgmn0223@168.131.81.48:"Jellyfish_Illumina_21mer_histo" "/Users/seongminkim/Desktop/"
 
 * -P: port number
 * sgmn0223: server ID
